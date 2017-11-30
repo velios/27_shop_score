@@ -4,6 +4,7 @@ from datetime import timedelta, datetime, date
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
+import pendulum
 
 
 app = Flask(__name__)
@@ -83,7 +84,7 @@ def score():
     orders_info = fetch_orders_info()
     return render_template('score.html',
                            orders=orders_info,
-                           time=datetime.now().strftime('%H:%M:%S'))
+                           time=pendulum.now('Europe/Moscow').to_time_string())
 
 
 if __name__ == "__main__":
