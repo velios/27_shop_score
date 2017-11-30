@@ -1,11 +1,9 @@
 from argparse import ArgumentParser
-from pprint import pprint
+from datetime import timedelta, datetime, date
 
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
-from datetime import timedelta, datetime, date
-
 
 
 app = Flask(__name__)
