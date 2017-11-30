@@ -15,6 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://{user}:{password}@{host}:{
                                                                                                    db='shop',)
 db = SQLAlchemy(app)
 
+
 class Order(db.Model):
     __tablename__ = 'orders'
 
@@ -43,11 +44,11 @@ def fetch_orders_info():
                                  .filter(Order.created > date.today())
                                  .order_by(desc(Order.created)))
     completed_orders = (all_orders_per_days_query
-                                  .filter(Order.confirmed != None)
-                                  .all())
-    current_orders_query = Order.query.filter(Order.confirmed == None)
+                        .filter(Order.confirmed.isnot(None))
+                        .all())
+    current_orders_query = Order.query.filter(Order.confirmed.is_(None))
     current_orders = (current_orders_query
-                                .all())
+                      .all())
     now_datetime = datetime.now()
     green_zone_timedelta = Order.created + timedelta(minutes=7)
     yellow_zone_timedelta = Order.created + timedelta(minutes=30)
