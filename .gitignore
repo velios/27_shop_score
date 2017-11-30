@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+[Ii]nclude/
+[Ll]ib/
+[Ss]cripts/
+.idea/
+cache/
+__pycache__
+!requirements.txt
+pip-selfcheck.json
+pyvenv.cfg
+lib64
